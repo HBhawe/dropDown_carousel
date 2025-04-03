@@ -58,7 +58,7 @@ prevBtn.addEventListener("click", (e) => {
     currentSlide = numberImages - 1;
   }
 
-  // if the current slide is less than 1, we reset it to the last dot
+  // if the current dot is less than 1, we reset it to the last dot
   if (activeDot < 1) {
     activeDot = numberImages;
   }
@@ -77,7 +77,7 @@ nextBtn.addEventListener("click", (e) => {
     currentSlide = 0;
   }
 
-  // if the current slide is greater than the no. of images, we reset it to the 1st dot
+  // if the current dot is greater than the no. of images, we reset it to the 1st dot
   if (activeDot > numberImages) {
     activeDot = 1;
   }

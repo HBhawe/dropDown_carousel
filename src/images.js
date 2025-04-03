@@ -1,3 +1,6 @@
+/* The code snippet you provided is exporting an array of objects named `images`. Each object in the
+array represents an image with two properties: `alt` which describes the image content and `src`
+which contains the URL of the image source. */
 export const images = [
   {
     alt: "Balloons with smiley faces",
