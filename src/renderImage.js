@@ -1,5 +1,5 @@
 export const renderImage = function (imageObject, carouselDiv) {
-  const markup = ` <img src="${imageObject.src}" alt="${imageObject.alt}" />`;
+  const markup = ` <img src="${imageObject.src}" alt="${imageObject.alt}" class="image" />`;
   carouselDiv.innerHTML = "";
   carouselDiv.insertAdjacentHTML("beforeend", markup);
 };

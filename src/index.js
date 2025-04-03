@@ -19,13 +19,13 @@ const nextBtn = document.querySelector(".next");
 const navigationDots = document.querySelector(".navigation-dots");
 
 const numberImages = images.length;
-let currentSlide = 1;
+let currentSlide = 0;
 let activeDot = 1;
 
 // FUNCTIONS
 const init = function () {
   initialise(dropdownDiv);
-  renderImage(images[currentSlide - 1], imageDiv);
+  renderImage(images[currentSlide], imageDiv);
   renderDots(numberImages, navigationDots, activeDot);
 };
 
@@ -53,31 +53,34 @@ prevBtn.addEventListener("click", (e) => {
   currentSlide -= 1;
   activeDot -= 1;
 
-  if (currentSlide < 1) {
+  // if the current slide is less than 0, we reset it to the last element
+  if (currentSlide < 0) {
     currentSlide = numberImages - 1;
   }
 
+  // if the current slide is less than 1, we reset it to the last dot
   if (activeDot < 1) {
     activeDot = numberImages;
   }
-  renderImage(images[currentSlide - 1], imageDiv);
+  renderImage(images[currentSlide], imageDiv);
   renderDots(numberImages, navigationDots, activeDot);
 });
 
 // next image event listener
 nextBtn.addEventListener("click", (e) => {
-  // console.log(`next button clicked`);
   e.preventDefault();
   currentSlide += 1;
   activeDot += 1;
 
-  if (currentSlide > numberImages) {
-    currentSlide = 1;
+  // if the current slide is greater than the no. of images, we reset it to the 0th element
+  if (currentSlide >= numberImages) {
+    currentSlide = 0;
   }
 
+  // if the current slide is greater than the no. of images, we reset it to the 1st dot
   if (activeDot > numberImages) {
     activeDot = 1;
   }
-  renderImage(images[currentSlide - 1], imageDiv);
+  renderImage(images[currentSlide], imageDiv);
   renderDots(numberImages, navigationDots, activeDot);
 });

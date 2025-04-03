@@ -118,8 +118,8 @@ img,
   opacity: 100%;
 }
 
-img {
+.image {
   animation: slide 0.5s linear;
-  max-width: 75vw;
-  max-height: 85vh;
+  width: 75vw;
+  height: 75vh;
 }
