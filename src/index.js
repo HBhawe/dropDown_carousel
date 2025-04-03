@@ -48,6 +48,7 @@ const nextSlide = function () {
   }
   renderImage(images[currentSlide], imageDiv);
   renderDots(numberImages, navigationDots, activeDot);
+  resetInterval(intervalID);
 };
 
 // function to go to the previous slide
@@ -66,26 +67,31 @@ const prevSlide = function () {
   }
   renderImage(images[currentSlide], imageDiv);
   renderDots(numberImages, navigationDots, activeDot);
+  resetInterval(intervalID);
 };
 
 // function to auto change slides every 5 seconds
 const slideChange = function () {
-  intervalID = setInterval(() => {
+  intervalID = setTimeout(() => {
     nextSlide();
   }, 5000);
+};
+
+const resetInterval = function (intervalID) {
+  clearTimeout(intervalID);
+  slideChange();
 };
 
 // using event bubbling to make sure to click the right dot/ make sure a dot was clicked
 const navigationClick = function (event) {
   // change slide only if an actual dot was clicked
   if (event.target.classList.contains("dot")) {
-    clearInterval(intervalID);
     const dotClicked = Number(event.target.dataset.slide);
     currentSlide = dotClicked - 1;
     activeDot = dotClicked;
     renderImage(images[currentSlide], imageDiv);
     renderDots(numberImages, navigationDots, activeDot);
-    slideChange();
+    resetInterval(intervalID);
   }
 };
 
